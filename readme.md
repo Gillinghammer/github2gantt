@@ -2,7 +2,7 @@
 See your Github repo milestones in a Gantt chart. Set and change your milestone's dates to help your team planning.
 
 ### Setup
-Clone this repo and then run `npm run setup`
+Clone this repo, `npm install` and then run `npm run setup`
 You will need:
 - Github username
 - Github personal access token
