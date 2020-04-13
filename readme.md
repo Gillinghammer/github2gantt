@@ -1,5 +1,5 @@
 ## Github 2 Gant
-See your Github repo milestones in a Gantt chart. Set and change your milestone's dates to help your team planning.
+Plot your Github milestones on a Gantt Chart showing each milestones' progress. Slide your project start and end dates to plan your projects. Projects that were not finished before the end date are shown in red. Projects are shown in yellow when they are within 14 days of their end date.
 
 ![preview](https://user-images.githubusercontent.com/578328/79090141-83eae180-7cfd-11ea-97b2-4443d9ed473f.png)
 
