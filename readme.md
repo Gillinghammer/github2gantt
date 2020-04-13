@@ -11,4 +11,8 @@ You will need:
 
 ### How to Use
 After you run the setup a config.json file will be created and saved in the project root.
-Run `npm start` and head over to localhost:3000.
+Run `npm start` and head over to localhost:3000/.
+
+`/milestones/data.json` stores all of your milestone data and tracks your timeline updates. 
+`./config.json` contains your Github personal accesstoken.
+Make sure to add these files to your .gitignore file
