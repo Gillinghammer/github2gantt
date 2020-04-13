@@ -143,7 +143,7 @@ function loadSvg(tasks) {
       let startDate = moment(start).format('YYYY-MM-DD');
       let endDate = moment(end).format('YYYY-MM-DD');
       let milestoneId = task.id;
-      console.log({ milestoneId, start, startDate, end, endDate });
+      console.log('on date change', start, { milestoneId, startDate, endDate });
       $.post('/update/' + milestoneId, { startDate, endDate });
       let updatedStatus = window.determineStatus({ due_on: endDate });
       task.status = updatedStatus;
