@@ -1,0 +1,47 @@
+body {
+  padding: 50px;
+  font: 14px Helvetica, Arial, sans-serif;
+  overscroll-behavior-x: none;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body > .ui.container {
+  margin-top: 3em;
+}
+
+.gantt-container .popup-wrapper {
+  background: none;
+}
+
+.gantt-container {
+  max-width: 100%;
+  overflow: scroll-x;
+}
+
+.gantt-container::-webkit-scrollbar { 
+  display: none; 
+}
+
+#mode {
+  position: absolute;
+  right: 0;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+#chart {
+  max-width: 100% !important;
+}
+
+.bar-wrapper.overdue .bar {
+  fill: tomato;
+}
+
+.bar-wrapper.warn .bar {
+  fill: rgb(255, 221, 71);
+}

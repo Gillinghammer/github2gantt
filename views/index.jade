@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  #container.ui.grid.container
+    .row
+      h1= title
+    .row
+      #chart.ui.segment
+        #saving.ui.inverted.dimmer
+          .ui.text.loader saving
+        svg#gantt
+    .row
+      .ui.buttons
+        #refresh.button.ui.button.violet.basic
+          | Refresh milestone tickets
+        #reset.button.ui.button.red.basic
+          | Reset all miletone dates
+      #mode.ui.buttons
+        button.ui.button.basic.violet.mode-selector(data-mode="Day")
+          | Day
+        button.ui.button.basic.violet.mode-selector(data-mode="Week")
+          | Week
+        button.ui.button.basic.violet.mode-selector(data-mode="Month")
+          | Month
+  .ui.modal
+    i.close.icon
+    .header
+      | Profile Picture
+    .image.content
+      .ui.medium.image
+        img(src='https://semantic-ui.com/images/avatar2/large/rachel.png')
+      .description
+        .ui.header We&apos;ve auto-chosen a profile image for you.
+        p
+          | We&apos;ve grabbed the following image from the 
+          a(href='https://www.gravatar.com' target='_blank') gravatar
+          |  image associated with your registered e-mail address.
+        p Is it okay to use this photo?
+    .actions
+      .ui.black.deny.button
+        | Nope
+      .ui.positive.right.labeled.icon.button
+        | Yep, that&apos;s me
+        i.checkmark.icon
+  script(src='./javascripts/data.js')
