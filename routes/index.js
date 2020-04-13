@@ -47,6 +47,19 @@ async function getMilestones() {
   });
 }
 
+async function getInitialData(req) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let milestones = await getMilestones();
+      let data = await populateMissingDates(milestones, req);
+      let update = await updateJson(data);
+      resolve(update);
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 async function refreshMilestones() {
   return new Promise(async (resolve, reject) => {
     try {
@@ -59,7 +72,7 @@ async function refreshMilestones() {
         m.closed_issues = refreshed[index].closed_issues;
         return m;
       });
-      let update = await d(milestones);
+      let update = await updateJson(milestones);
       resolve(update);
     } catch (error) {
       console.error(error);
@@ -109,6 +122,9 @@ router.get('/milestones', async function (req, res, next) {
 });
 
 router.get('/', async function (req, res, next) {
+  if (!fs.existsSync('./milestones/data.json')) {
+    await getInitialData(req);
+  }
   const data = fs.readFileSync('./milestones/data.json');
   const milestones = JSON.parse(data);
   res.render('index', { title: 'WWW Gantt', milestones });
@@ -131,7 +147,7 @@ router.post('/update/:milestoneId', async function (req, res, next) {
     }
   });
   // write to file
-  let updatedMilestones = await d(milestones);
+  let updatedMilestones = await updateJson(milestones);
   res.json(updatedMilestones);
 });
 
@@ -146,9 +162,7 @@ router.post('/refresh', async function (req, res, next) {
 
 /* RESET GANTT BY HITTING THIS ENDPOINT TO REDOWNLOAD AND SAVE MILESTONES */
 router.post('/reset-my-project', async function (req, res, next) {
-  let milestones = await getMilestones();
-  let data = await populateMissingDates(milestones, req);
-  let update = await updateJson(data);
+  let update = await getInitialData(req);
   res.json(update);
 });
 
